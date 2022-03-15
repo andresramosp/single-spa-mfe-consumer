@@ -28,12 +28,13 @@
     3. Global variable
 
     More information about shared dependencies can be found at https://single-spa.js.org/docs/recommended-setup#sharing-with-import-maps.
+     "@mfe-one/app": "http://single-spa-mfe-one.herokuapp.com/js/app.2bd0c30a.js",
   -->
   <script type="systemjs-importmap">
     {
       "imports": {
         "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js",
-        "@mfe-one/app": "http://localhost:9999/js/app.js",
+        "@mfe-one/app": "http://single-spa-mfe-one.herokuapp.com/js/app.2bd0c30a.js",
         "@mfe-two/app": "http://localhost:9998/js/app.js",
         "@mfe-three/app": "http://localhost:9995/js/app.js",
         "@mfe-four/app": "http://localhost:9994/js/app.js"
@@ -89,22 +90,22 @@
           <li><a href="map">Map</a></li>
         </ul>
         <div class="main-content">
-          <div style="font-size: 2em">This is the container App</div>
+          <div style="font-size: 2em">Single SPA (No Framework)</div>
           <route path="home">
-            <div style="border: 1px solid red">
+            <div style="border: 1px solid blue; padding: 15px">
               <application name="@mfe-one/app"></application>
             </div>
-            <div style="border: 1px solid red">
+            <div style="border: 1px solid blue; padding: 15px">
               <application name="@mfe-two/app"></application>
             </div>
           </route>
           <route path="map">
-            <div style="border: 1px solid red">
+            <div style="border: 1px solid blue">
               <application name="@mfe-three/app"></application>
             </div>
           </route>
           <route path="full-app">
-            <div style="border: 1px solid red">
+            <div style="border: 1px solid blue">
               <application name="@mfe-four/app"></application>
             </div>
           </route>
