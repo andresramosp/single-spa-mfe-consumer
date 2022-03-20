@@ -38,15 +38,21 @@
         "@mfe-one/app": "http://localhost:9999/js/app.js",
         "@mfe-two/app": "http://localhost:9998/js/app.js",
         "@mfe-three/app": "http://localhost:9995/js/app.js",
-        "@mfe-four/app": "http://localhost:9994/js/app.js",
+        "@mfe-login/app": "http://localhost:9898/js/app.js",
+        "org/auth": "http://localhost:9001/org-auth.js",
         "vue": "https://unpkg.com/vue@3",
+        "vue-router": "https://unpkg.com/vue-router@4",
         "element-plus": "//unpkg.com/element-plus",
-        "moment": "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        "moment": "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js",
+        "rxjs": "https://cdn.jsdelivr.net/npm/@esm-bundle/rxjs/system/es2015/rxjs.min.js",
+        "rxjs/operators": "https://cdn.jsdelivr.net/npm/@esm-bundle/rxjs/system/es2015/rxjs-operators.min.js"
       }
     }
   </script>
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js" as="script">
   <script src="https://unpkg.com/vue@3"></script>
+  <script src="https://unpkg.com/vue-router@4"></script>
+
   <!-- <script src="//unpkg.com/element-plus"></script> -->
 
   <!-- Add your organization's prod import map URL to this script's src  -->
@@ -86,7 +92,8 @@
   <script>
     Object.getPrototypeOf(System).firstGlobalProp = true;
     System.set(System.resolve('vue'), window.Vue)
-    // System.set(System.resolve('vue-router'), window.VueRouter)
+    System.set(System.resolve('vue-router'), window.VueRouter)
+    // System.import('org/auth');
     System.import('@org/root-config');
   </script>
    
@@ -102,9 +109,9 @@
           <li><a href="map">Map</a></li>
         </ul>
         <div class="main-content">
-          <div style="font-size: 2em">Single SPA (No Framework)</div>
+          <application name="@mfe-login/app"></application>
           <route path="home">
-            <div style="border: 1px solid blue; padding: 15px">
+            <div style="border: 1px solid blue; padding: 15px; margin-top: 100px">
               <application name="@mfe-one/app"></application>
             </div>
             <div style="border: 1px solid blue; padding: 15px">
@@ -114,11 +121,6 @@
           <route path="map">
             <div style="border: 1px solid blue">
               <application name="@mfe-three/app"></application>
-            </div>
-          </route>
-          <route path="full-app">
-            <div style="border: 1px solid blue">
-              <application name="@mfe-four/app"></application>
             </div>
           </route>
         </div>
